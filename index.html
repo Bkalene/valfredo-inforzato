@@ -43,7 +43,12 @@
         <span></span>
       </button>
     </div>
+    <!-- Barra de Progresso de Leitura -->
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
   </header>
+
+  <!-- Spotlight Interativo que Segue o Cursor no Desktop -->
+  <div class="spotlight-cursor" id="spotlightCursor"></div>
 
   <!-- Seção 1: HERO / Capa Editorial -->
   <section class="hero-section" id="hero">
@@ -59,7 +64,10 @@
         
         <h1 class="hero-title">
           <span class="title-sub">PORTFÓLIO DE ARTES CÊNICAS</span>
-          <span class="title-main">VALFREDO<br><span class="accent-text">INFORZATO</span></span>
+          <span class="title-main">
+            <span class="title-line title-first">VALFREDO</span>
+            <span class="title-line title-last accent-text">INFORZATO</span>
+          </span>
         </h1>
 
         <div class="hero-roles">
@@ -110,22 +118,35 @@
         </div>
       </div>
 
-      <!-- Imagens Hero em Colagem Editorial Estilo Juliana Johann -->
+      <!-- Vitrine Cênica Interativa (Showcase Multimídia com Seletor de Cenas) -->
       <div class="hero-media-wrapper">
-        <div class="editorial-card hero-primary-image">
-          <img src="assets/images/alma_clara_clip.jpg" alt="Valfredo Inforzato - Ensaio Cênico Cinematográfico" class="cover-photo">
+        <div class="editorial-card hero-primary-image" id="heroCard">
+          <img id="heroMainImage" src="assets/images/alma_clara_clip.jpg" alt="Valfredo Inforzato - Ensaio Cênico Cinematográfico" class="cover-photo zoomable" onclick="openLightbox(this.src, document.getElementById('heroCaptionTitle').textContent + ' • ' + document.getElementById('heroCaptionSub').textContent)">
           <div class="vertical-tag">VALFREDO INFORZATO JÚNIOR</div>
           <div class="image-caption">
-            <span class="caption-title">Expressão & Presença Cênica</span>
-            <span class="caption-sub">Alma Clara • Fotografia & Performance</span>
+            <span class="caption-title" id="heroCaptionTitle">Expressão & Presença Cênica</span>
+            <span class="caption-sub" id="heroCaptionSub">Alma Clara • Fotografia & Performance</span>
           </div>
         </div>
-        <div class="hero-secondary-card">
-          <img src="assets/images/cultura_em_casa_1.jpg" alt="Valfredo Inforzato em aula e performance corporal" class="sub-photo">
-          <div class="floating-badge">
-            <span class="f-title">Klauss Vianna</span>
-            <span class="f-desc">Consciência Corporal</span>
-          </div>
+
+        <!-- Miniaturas Interativas para Alternar a Cena do Palco -->
+        <div class="hero-scene-selector" id="sceneSelector">
+          <button class="scene-thumb active" data-img="assets/images/alma_clara_clip.jpg" data-title="Expressão & Presença Cênica" data-sub="Alma Clara • Performance Fotográfica" aria-label="Cena 1: Alma Clara">
+            <img src="assets/images/alma_clara_clip.jpg" alt="Thumb Cena 1">
+            <span class="scene-label">Cena</span>
+          </button>
+          <button class="scene-thumb" data-img="assets/images/cultura_em_casa_1.jpg" data-title="Dança & Consciência Corporal" data-sub="Técnica Klauss Vianna • Movimento Somático" aria-label="Cena 2: Movimento">
+            <img src="assets/images/cultura_em_casa_1.jpg" alt="Thumb Cena 2">
+            <span class="scene-label">Dança</span>
+          </button>
+          <button class="scene-thumb" data-img="assets/images/fala_da_fome.jpg" data-title="Fala da Fome..." data-sub="Direção Cênica • Carolina Maria de Jesus" aria-label="Cena 3: Fala da Fome">
+            <img src="assets/images/fala_da_fome.jpg" alt="Thumb Cena 3">
+            <span class="scene-label">Direção</span>
+          </button>
+          <button class="scene-thumb" data-img="assets/images/o_passaro_na_prisao.jpg" data-title="O Pássaro na Prisão" data-sub="Grupo Teatro do Comprimido • CAPS II" aria-label="Cena 4: CAPS II">
+            <img src="assets/images/o_passaro_na_prisao.jpg" alt="Thumb Cena 4">
+            <span class="scene-label">Inclusão</span>
+          </button>
         </div>
       </div>
     </div>
@@ -293,8 +314,8 @@
       <div class="destaques-grid">
         <!-- Destaque 1: Fala da Fome -->
         <article class="project-spotlight">
-          <div class="project-poster-wrapper">
-            <img src="assets/images/fala_da_fome.jpg" alt="Pôster Oficial - Fala da Fome" class="project-poster zoomable" onclick="openLightbox(this.src, 'Fala da Fome - Direção e Cenografia: Valfredo Inforzato')">
+          <div class="project-poster-wrapper" onclick="openLightbox('assets/images/fala_da_fome.jpg', 'Fala da Fome - Direção e Cenografia: Valfredo Inforzato')" tabindex="0" role="button" aria-label="Ampliar pôster Fala da Fome">
+            <img src="assets/images/fala_da_fome.jpg" alt="Pôster Oficial - Fala da Fome" class="project-poster zoomable">
             <div class="poster-overlay">
               <span class="zoom-hint">Clique para ampliar pôster</span>
             </div>
@@ -321,8 +342,8 @@
 
         <!-- Destaque 2: O Pássaro na Prisão do Chefe Mandão -->
         <article class="project-spotlight">
-          <div class="project-poster-wrapper">
-            <img src="assets/images/o_passaro_na_prisao.jpg" alt="Pôster Oficial - O Pássaro na Prisão do Chefe Mandão" class="project-poster zoomable" onclick="openLightbox(this.src, 'O Pássaro na Prisão do Chefe Mandão - Dia da Luta Antimanicomial - Direção: Valfredo Inforzato')">
+          <div class="project-poster-wrapper" onclick="openLightbox('assets/images/o_passaro_na_prisao.jpg', 'O Pássaro na Prisão do Chefe Mandão - Dia da Luta Antimanicomial - Direção: Valfredo Inforzato')" tabindex="0" role="button" aria-label="Ampliar cartaz O Pássaro na Prisão do Chefe Mandão">
+            <img src="assets/images/o_passaro_na_prisao.jpg" alt="Pôster Oficial - O Pássaro na Prisão do Chefe Mandão" class="project-poster zoomable">
             <div class="poster-overlay">
               <span class="zoom-hint">Clique para ampliar cartaz</span>
             </div>
@@ -349,8 +370,11 @@
 
         <!-- Destaque 3: De Perto Todo Mundo é Normal & Circo de Artes -->
         <article class="project-spotlight">
-          <div class="project-poster-wrapper">
-            <img src="assets/images/alma_clara_clip.jpg" alt="Cena de Espetáculo" class="project-poster zoomable" onclick="openLightbox(this.src, 'De Perto Todo Mundo é Normal & O Maior Espetáculo da Terra - Direção: Valfredo Inforzato')">
+          <div class="project-poster-wrapper" onclick="openLightbox('assets/images/alma_clara_clip.jpg', 'De Perto Todo Mundo é Normal & O Maior Espetáculo da Terra - Direção: Valfredo Inforzato')" tabindex="0" role="button" aria-label="Ampliar imagem De Perto Todo Mundo é Normal">
+            <img src="assets/images/alma_clara_clip.jpg" alt="Cena de Espetáculo" class="project-poster zoomable">
+            <div class="poster-overlay">
+              <span class="zoom-hint">Clique para ampliar imagem</span>
+            </div>
           </div>
           <div class="project-info">
             <div class="project-meta">
@@ -371,8 +395,11 @@
 
         <!-- Destaque 4: Grandes Produções Natalinas & Comunitárias -->
         <article class="project-spotlight">
-          <div class="project-poster-wrapper">
-            <img src="assets/images/cultura_em_casa_1.jpg" alt="Um Conto de Natal - Charles Dickens" class="project-poster zoomable" onclick="openLightbox(this.src, 'Um Conto de Natal & Natal Para Todos - Direção e Adaptação: Valfredo Inforzato')">
+          <div class="project-poster-wrapper" onclick="openLightbox('assets/images/cultura_em_casa_1.jpg', 'Um Conto de Natal & Natal Para Todos - Direção e Adaptação: Valfredo Inforzato')" tabindex="0" role="button" aria-label="Ampliar imagem Um Conto de Natal">
+            <img src="assets/images/cultura_em_casa_1.jpg" alt="Um Conto de Natal - Charles Dickens" class="project-poster zoomable">
+            <div class="poster-overlay">
+              <span class="zoom-hint">Clique para ampliar imagem</span>
+            </div>
           </div>
           <div class="project-info">
             <div class="project-meta">
@@ -402,6 +429,16 @@
         <p class="section-subtitle">
           Navegue pelas mais de três décadas de espetáculos encenados, dirigidos e concebidos por Valfredo Inforzato Júnior.
         </p>
+      </div>
+
+      <!-- Barra de Busca Rápida e Filtros Dinâmicos -->
+      <div class="repertorio-toolbar">
+        <div class="search-input-box">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="repertorioSearch" placeholder="Buscar por obra, autor (ex: Nelson Rodrigues, Brecht, Carolina Maria de Jesus), ano ou função..." aria-label="Pesquisar espetáculos">
+          <button id="searchClearBtn" class="search-clear-btn" aria-label="Limpar busca" style="display: none;">&times;</button>
+        </div>
+        <span id="searchResultCount" class="search-count-badge">19 espetáculos catalogados</span>
       </div>
 
       <!-- Barra de Filtros Interativa -->
@@ -723,12 +760,12 @@
         </div>
 
         <div class="docencia-gallery">
-          <div class="d-gallery-card">
-            <img src="assets/images/expressao_corporal.jpg" alt="Oficina de Expressão Corporal" class="zoomable" onclick="openLightbox(this.src, 'Oficina de Expressão Corporal e Jogos Teatrais - Valfredo Inforzato')">
+          <div class="d-gallery-card" onclick="openLightbox('assets/images/expressao_corporal.jpg', 'Oficina de Expressão Corporal e Jogos Teatrais - Valfredo Inforzato')" tabindex="0" role="button" aria-label="Ampliar imagem Oficina de Consciência Corporal">
+            <img src="assets/images/expressao_corporal.jpg" alt="Oficina de Expressão Corporal" class="zoomable">
             <span>Oficina de Consciência Corporal</span>
           </div>
-          <div class="d-gallery-card">
-            <img src="assets/images/cultura_em_casa_1.jpg" alt="Aulas Virtuais Cultura em Casa" class="zoomable" onclick="openLightbox(this.src, 'Aulas Virtuais de Movimento - Programa Cultura em Casa')">
+          <div class="d-gallery-card" onclick="openLightbox('assets/images/cultura_em_casa_1.jpg', 'Aulas Virtuais de Movimento - Programa Cultura em Casa')" tabindex="0" role="button" aria-label="Ampliar imagem Projeto Cultura em Casa">
+            <img src="assets/images/cultura_em_casa_1.jpg" alt="Aulas Virtuais Cultura em Casa" class="zoomable">
             <span>Projeto Cultura em Casa</span>
           </div>
         </div>
