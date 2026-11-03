@@ -1575,7 +1575,44 @@ h1, h2, h3, h4, .brand-monogram, .section-tag {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (MOBILE & TABLET)
+   BOTÃO FLUTUANTE WHATSAPP (Acesso Rápido)
+   ========================================================================== */
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 990;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25d366;
+  color: #fff;
+  padding: 0.8rem 1.35rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.6);
+  color: #fff;
+}
+
+.floating-wa-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE COMPLETA (TABLET & SMARTPHONES)
    ========================================================================== */
 
 @media (max-width: 992px) {
@@ -1626,7 +1663,84 @@ h1, h2, h3, h4, .brand-monogram, .section-tag {
 
   .project-poster {
     min-height: 320px;
-    max-height: 420px;
+    max-height: 440px;
+  }
+
+  /* Menu Mobile em Tela Cheia / Gaveta Superior Suave */
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+    background: rgba(9, 9, 11, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2.5rem 2rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    overflow-y: auto;
+    z-index: 99;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-gold);
+    padding-left: 0.5rem;
+  }
+
+  .btn-nav {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.85rem 1.5rem !important;
+    font-size: 1.05rem !important;
+  }
+
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    width: 32px;
+    height: 24px;
+    justify-content: space-between;
+  }
+
+  .nav-toggle span {
+    transform-origin: left center;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, -1px);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(2px, 1px);
   }
 }
 
@@ -1635,52 +1749,224 @@ h1, h2, h3, h4, .brand-monogram, .section-tag {
     padding: 4.5rem 0;
   }
 
-  .nav-links {
-    position: fixed;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    background: #09090b;
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+  }
+
+  .hero-section {
+    padding: 7rem 0 3.5rem;
+    min-height: auto;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .hero-actions {
     flex-direction: column;
-    padding: 2rem 1.5rem;
-    gap: 1.25rem;
-    border-bottom: 1px solid var(--border-subtle);
+    width: 100%;
+    gap: 0.85rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+  }
+
+  /* Filtros Horizontais com Swipe Touch Nativo */
+  .filter-controls {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.25rem 0 0.85rem;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    scrollbar-width: none;
+  }
+
+  .filter-controls::-webkit-scrollbar {
     display: none;
   }
 
-  .nav-links.active {
-    display: flex;
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.82rem;
   }
 
-  .nav-toggle {
-    display: flex;
+  /* Repertório e Vídeos em 1 Coluna Fluida */
+  .repertorio-timeline, .videos-grid, .curadoria-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
+  .rep-item {
+    padding: 1.25rem;
+  }
+
+  .contato-box {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .contato-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .c-channel-card {
+    padding: 1.25rem;
+  }
+
+  .contato-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .hero-title .title-sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-title .title-main {
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+  }
+
+  .hero-roles {
+    font-size: 0.82rem;
+    gap: 0.4rem 0.6rem;
+    line-height: 1.5;
+  }
+
+  .hero-lead {
+    font-size: 0.98rem;
+  }
+
+  /* Estatísticas em Grade 2x2 Perfeita no Smartphone */
   .hero-stats {
-    flex-wrap: wrap;
-    gap: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1rem;
+    width: 100%;
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+
+  .stat-card {
+    align-items: center;
+  }
+
+  .stat-number {
+    font-size: 1.7rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
   }
 
   .stat-divider {
     display: none;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
+  .cover-photo {
+    height: 380px;
   }
 
-  .btn {
-    width: 100%;
+  .vertical-tag {
+    font-size: 0.65rem;
+    top: 15px;
+    right: 10px;
   }
 
-  .contato-box {
-    padding: 2.5rem 1.5rem 1.5rem;
+  .bio-quote {
+    font-size: 1.2rem;
+    padding-left: 1rem;
   }
 
-  .contato-footer {
-    flex-direction: column;
-    text-align: center;
+  .bio-img {
+    height: 360px;
+  }
+
+  .f-card {
+    padding: 1.5rem;
+  }
+
+  .f-course {
+    font-size: 1.15rem;
+  }
+
+  .quote-box {
+    padding: 1.5rem;
+  }
+
+  .f-image-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    padding: 1.6rem 1.25rem;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+  }
+
+  .caps-highlight {
+    padding: 1.6rem 1.25rem;
+  }
+
+  .escolas-highlight {
+    padding: 1.4rem 1.25rem;
+  }
+
+  /* No celular, o botão flutuante de WhatsApp fica em formato circular com ícone */
+  .floating-wa-label {
+    display: none;
+  }
+
+  .floating-whatsapp {
+    padding: 0.9rem;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .floating-whatsapp svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .modal-dialog {
+    width: 95%;
+  }
+
+  .modal-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1rem;
+  }
+
+  .lightbox-close {
+    top: 15px;
+    right: 20px;
+    font-size: 2.2rem;
   }
 }
 
@@ -1694,7 +1980,7 @@ h1, h2, h3, h4, .brand-monogram, .section-tag {
     color: #fff !important;
   }
 
-  .navbar, .hero-actions, .filter-controls, .btn-sm, .print-btn, .modal, .lightbox {
+  .navbar, .hero-actions, .filter-controls, .btn-sm, .print-btn, .modal, .lightbox, .floating-whatsapp {
     display: none !important;
   }
 
@@ -1709,4 +1995,5 @@ h1, h2, h3, h4, .brand-monogram, .section-tag {
     break-inside: avoid;
   }
 }
+
 

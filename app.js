@@ -17,12 +17,14 @@ function initNavbar() {
 
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
     });
 
     // Fechar ao clicar em link
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
         navLinks.classList.remove('active');
       });
     });
