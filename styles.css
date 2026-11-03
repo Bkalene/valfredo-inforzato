@@ -1,0 +1,1712 @@
+/* ==========================================================================
+   PORTFÓLIO VALFREDO INFORZATO JÚNIOR
+   Design Editorial Inspirado no Portfólio de Juliana Johann + Inovações Web
+   ========================================================================== */
+
+:root {
+  --bg-primary: #09090b;
+  --bg-secondary: #121215;
+  --bg-card: #18181c;
+  --bg-card-hover: #222228;
+  
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  
+  --accent-gold: #e5b869;
+  --accent-gold-glow: rgba(229, 184, 105, 0.25);
+  --accent-amber: #f59e0b;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(229, 184, 105, 0.5);
+
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E UTILITÁRIOS
+   ========================================================================== */
+
+h1, h2, h3, h4, .brand-monogram, .section-tag {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+  max-width: 820px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.accent-text {
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   BOTÕES E INTERATIVIDADE
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary {
+  background-color: var(--accent-gold);
+  color: #09090b;
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-primary:hover {
+  background-color: #f3c981;
+  box-shadow: 0 0 25px var(--accent-gold-glow);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(229, 184, 105, 0.05);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #1c1c22;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+.btn-nav {
+  padding: 0.5rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent-gold) !important;
+}
+
+.btn-nav:hover {
+  border-color: var(--accent-gold);
+  background: rgba(229, 184, 105, 0.1);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-main);
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   SEÇÃO 1: HERO (Inspirada na Capa de Juliana Johann)
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 5rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 75% 30%, rgba(229, 184, 105, 0.07) 0%, rgba(9, 9, 11, 0) 70%),
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, rgba(9, 9, 11, 0) 60%),
+              #09090b;
+}
+
+.stage-spotlight {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.left-spot {
+  top: 10%;
+  left: -10%;
+  width: 450px;
+  height: 450px;
+  background: rgba(229, 184, 105, 0.08);
+}
+
+.right-spot {
+  bottom: 0;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-gold);
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.title-sub {
+  font-size: 1.05rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+}
+
+.title-main {
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  line-height: 0.95;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+}
+
+.hero-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+}
+
+.hero-roles span {
+  transition: color 0.2s ease;
+}
+
+.hero-roles span:hover {
+  color: var(--accent-gold);
+}
+
+.hero-lead {
+  font-size: 1.12rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin-bottom: 2.25rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--accent-gold);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-subtle);
+}
+
+/* Colagem de Fotos Hero (Estilo Juliana Johann com tag vertical) */
+.hero-media-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.editorial-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.cover-photo {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: contrast(1.1) grayscale(20%);
+  transition: var(--transition-smooth);
+}
+
+.editorial-card:hover .cover-photo {
+  transform: scale(1.03);
+  filter: contrast(1.1) grayscale(0%);
+}
+
+.vertical-tag {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(9, 9, 11, 0.95), rgba(9, 9, 11, 0));
+  display: flex;
+  flex-direction: column;
+}
+
+.caption-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.caption-sub {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+}
+
+.hero-secondary-card {
+  position: absolute;
+  bottom: -35px;
+  left: -40px;
+  width: 180px;
+  height: 220px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid #222228;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  background: var(--bg-primary);
+}
+
+.sub-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.floating-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.f-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.f-desc {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SEÇÃO 2: BIOGRAFIA & MANIFESTO (Estilo Página 2 de Juliana)
+   ========================================================================== */
+
+.bio-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.bio-portrait-col {
+  display: flex;
+  gap: 1.5rem;
+  position: sticky;
+  top: 100px;
+}
+
+.vertical-name-sidebar {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.bio-image-frame {
+  flex: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.bio-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.bio-frame-info {
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bio-tag {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.bio-spec {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.bio-quote {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+  border-left: 3px solid var(--accent-gold);
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.bio-narrative p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 1.35rem;
+  line-height: 1.75;
+}
+
+.bio-narrative strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.bio-badges-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.bio-badge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.b-icon {
+  font-size: 1.4rem;
+}
+
+.bio-badge-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.bio-badge-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SEÇÃO 3: FORMAÇÃO (Estilo Página 3 de Juliana)
+   ========================================================================== */
+
+.formacao-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+}
+
+.formacao-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.f-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+}
+
+.f-card:hover {
+  border-color: var(--border-focus);
+  transform: translateX(4px);
+}
+
+.f-card.accent-card {
+  border-left: 4px solid var(--accent-gold);
+}
+
+.f-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.f-year {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.f-institution {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+.f-course {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.f-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.formacao-media {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quote-box {
+  background: linear-gradient(145deg, #18181e, #111114);
+  padding: 2.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.quote-symbol {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--accent-gold);
+  opacity: 0.4;
+  margin-bottom: -1.5rem;
+}
+
+.quote-box p {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.quote-author {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.f-image-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.strip-item {
+  position: relative;
+  height: 220px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.strip-item:hover img {
+  transform: scale(1.08);
+}
+
+.strip-item span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.75rem;
+  background: rgba(9, 9, 11, 0.85);
+  font-size: 0.72rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SEÇÃO 4: DESTAQUES DE DIREÇÃO (Estilo Páginas 4 e 5 de Juliana)
+   ========================================================================== */
+
+.destaques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+  gap: 2.5rem;
+}
+
+.project-spotlight {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.project-spotlight:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.project-poster-wrapper {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-poster {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project-spotlight:hover .project-poster {
+  transform: scale(1.05);
+}
+
+.poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.project-poster-wrapper:hover .poster-overlay {
+  opacity: 1;
+}
+
+.zoom-hint {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: 50px;
+}
+
+.project-info {
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.p-year {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.p-category {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.project-title {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.project-source {
+  font-size: 0.9rem;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+}
+
+.project-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.p-tag {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.p-badge-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   SEÇÃO 5: REPERTÓRIO HISTÓRICO & FILTROS
+   ========================================================================== */
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  padding: 0.55rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-btn.active {
+  background: var(--accent-gold);
+  color: #09090b;
+  border-color: var(--accent-gold);
+}
+
+.repertorio-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.rep-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.rep-item:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+}
+
+.rep-year {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  min-width: 65px;
+}
+
+.rep-body {
+  flex: 1;
+}
+
+.rep-title {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.rep-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.rep-details {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SEÇÃO 6: CURADORIA & GRANDES FESTIVAIS (Estilo Página 7 de Juliana)
+   ========================================================================== */
+
+.curadoria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.curadoria-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.curadoria-card:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+}
+
+.curadoria-card.featured {
+  background: linear-gradient(160deg, #1e1e26 0%, #131317 100%);
+  border: 1px solid rgba(229, 184, 105, 0.4);
+}
+
+.curadoria-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(229, 184, 105, 0.1);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.curadoria-title {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.curadoria-time {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  margin-bottom: 1.25rem;
+}
+
+.curadoria-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  flex-grow: 1;
+}
+
+.curadoria-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.curadoria-tags span {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SEÇÃO 7: DOCÊNCIA & CAPS II (Estilo Página 8 de Juliana)
+   ========================================================================== */
+
+.docencia-section {
+  background-color: var(--bg-secondary);
+}
+
+.docencia-split {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.caps-highlight {
+  background: #191920;
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.caps-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 0.75rem;
+}
+
+.caps-highlight h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.caps-highlight p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.caps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.caps-list li {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.caps-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+}
+
+.escolas-highlight {
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.escolas-highlight h4 {
+  font-size: 1.15rem;
+  color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.escolas-highlight h4:first-child {
+  margin-top: 0;
+}
+
+.escolas-highlight p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.docencia-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.d-gallery-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  height: 260px;
+}
+
+.d-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.d-gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.d-gallery-card span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(9, 9, 11, 0.85);
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SEÇÃO 8: VÍDEOS & MULTIMÍDIA
+   ========================================================================== */
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.video-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.video-card:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.video-thumb-wrapper {
+  position: relative;
+  height: 220px;
+  background: #000;
+  overflow: hidden;
+}
+
+.video-thumb-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.video-card:hover .video-thumb-wrapper img {
+  transform: scale(1.06);
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.video-card:hover .play-overlay {
+  background: rgba(9, 9, 11, 0.2);
+}
+
+.play-icon {
+  width: 54px;
+  height: 54px;
+  background: var(--accent-gold);
+  color: #09090b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px var(--accent-gold-glow);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-card:hover .play-icon {
+  transform: scale(1.15);
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.video-info {
+  padding: 1.25rem 1.5rem;
+}
+
+.video-title {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.video-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SEÇÃO 9: CONTATO & ENCERRAMENTO (Estilo Página 10 de Juliana)
+   ========================================================================== */
+
+.contato-box {
+  background: linear-gradient(180deg, #141418 0%, #0c0c0e 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 4.5rem 3rem 2.5rem;
+}
+
+.contato-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.contato-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.contato-lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.contato-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.c-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.c-channel-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  background: #1c1c23;
+}
+
+.c-icon {
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+}
+
+.c-info {
+  flex: 1;
+}
+
+.c-type {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.c-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.c-arrow {
+  color: var(--text-subtle);
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.c-channel-card:hover .c-arrow {
+  transform: translateX(4px);
+  color: var(--accent-gold);
+}
+
+.contato-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.f-monogram {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gold);
+  color: #000;
+  border-radius: 4px;
+  font-weight: 900;
+}
+
+.footer-copy p {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.footer-subcopy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   MODAIS E LIGHTBOX
+   ========================================================================== */
+
+.modal, .lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active, .lightbox.active {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 860px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modal-header h3 {
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.modal-close, .lightbox-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover, .lightbox-close:hover {
+  color: var(--accent-gold);
+}
+
+.modal-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  background: #000;
+}
+
+.modal-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  z-index: 10;
+  font-size: 2.5rem;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3.5rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-roles {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-secondary-card {
+    display: none;
+  }
+
+  .bio-grid, .formacao-grid, .docencia-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .bio-portrait-col {
+    position: static;
+  }
+
+  .vertical-name-sidebar {
+    display: none;
+  }
+
+  .destaques-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .project-poster {
+    min-height: 320px;
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4.5rem 0;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: #09090b;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .contato-box {
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+
+  .contato-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS DE IMPRESSÃO (EXPORTAR PDF EM PADRÃO EDITORIAL JULIANA JOHANN)
+   ========================================================================== */
+
+@media print {
+  body {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  .navbar, .hero-actions, .filter-controls, .btn-sm, .print-btn, .modal, .lightbox {
+    display: none !important;
+  }
+
+  .section {
+    padding: 2rem 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .project-spotlight, .curadoria-card, .f-card {
+    border: 1px solid #444 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
